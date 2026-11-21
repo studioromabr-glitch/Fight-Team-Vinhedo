@@ -584,27 +584,10 @@ address svg {
 .contact-grid .button {
   margin-top:20px}
 
-.location {
-  border:1px solid #484e3a;
-  min-height:400px;
-  padding:45px;
-  overflow:hidden;
-  background:repeating-linear-gradient(45deg,transparent,transparent 30px,#ffffff04 30px,#ffffff04 31px),#20251b}
 
-.location .eyebrow {
-  margin-block:25px 15px;
-  color:#aab399}
 
-.location h3 {
-  font-size:4.5rem}
 
-.location h3+p {
-  margin-top:25px;
-  font-size:.9rem;
-  color:#bbc2ad}
 
-.location a {
-  margin-top:15px}
 
 .faq {
   padding-bottom:100px;
@@ -864,12 +847,7 @@ footer .brand {
 .trial-form {
   padding:25px}
 
-.location {
-  padding:30px;
-  min-height:350px}
 
-.location h3 {
-  font-size:4rem}
 
 .faq {
   padding-bottom:65px}
@@ -892,3 +870,34 @@ footer .brand {
 
 
 
+
+
+.location-map {
+  width: 100%;
+  height: 384px;
+  overflow: hidden;
+  border: 1px solid #484e3a;
+  border-radius: 24px;
+  background: #20251b;
+  box-shadow: 0 8px 28px #0003;
+}
+
+.location-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .location-map { height: 320px; }
+}
+
+.price > .count-up-text {
+  display: inline-block;
+  padding-top: 0;
+  font: inherit;
+  vertical-align: baseline;
+  font-variant-numeric: tabular-nums;
+  min-width: 3ch;
+}

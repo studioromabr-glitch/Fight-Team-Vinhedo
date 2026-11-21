@@ -1,0 +1,71 @@
+.button.star-border {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--star-radius);
+  border: 1px solid #ffffff38;
+  background: #151713;
+  color: #f8f9f5;
+  transition: background 180ms ease, box-shadow 180ms ease;
+}
+
+.button.star-border:hover {
+  background: #292d24;
+  border-color: #ffffff60;
+  box-shadow: 0 0 18px #ffffff10;
+}
+
+.star-border__content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.star-border__outline {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  border-radius: inherit;
+  filter: drop-shadow(0 0 var(--star-glow) var(--star-color));
+}
+
+.star-border__outline rect {
+  x: calc(var(--star-thickness) / 2);
+  y: calc(var(--star-thickness) / 2);
+  width: calc(100% - var(--star-thickness));
+  height: calc(100% - var(--star-thickness));
+  rx: calc(var(--star-radius) - 1px);
+  ry: calc(var(--star-radius) - 1px);
+  fill: none;
+  stroke-width: var(--star-thickness);
+  stroke-linecap: round;
+  animation: star-border-orbit var(--star-duration) linear infinite;
+  animation-delay: var(--star-delay, 0s);
+  animation-direction: var(--star-direction);
+}
+
+.star-border__trail { stroke: var(--star-trail-color); }
+.star-border__trail--soft { opacity: .12; }
+.star-border__trail--medium { opacity: .3; }
+.star-border__trail--bright { opacity: .65; }
+.star-border__head { stroke: var(--star-color); }
+.star-border[data-hover='lap']:hover .star-border__outline rect { animation-name: star-border-hover-lap; }
+.star-border__pulse {
+  position: absolute;
+  inset: -1px;
+  border: 2px solid var(--star-color);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: star-border-pulse 500ms ease-out forwards;
+}
+
+@keyframes star-border-orbit { to { stroke-dashoffset: -1000; } }
+@keyframes star-border-hover-lap { to { stroke-dashoffset: -1000; } }
+@keyframes star-border-pulse { from { opacity: .8; transform: scale(1); } to { opacity: 0; transform: scale(1.07, 1.2); } }
+@media (prefers-reduced-motion: reduce) {
+  .star-border__outline rect { animation: none; }
+  .star-border__pulse { display: none; }
+}

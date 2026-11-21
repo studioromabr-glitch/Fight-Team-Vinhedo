@@ -901,3 +901,41 @@ footer .brand {
   font-variant-numeric: tabular-nums;
   min-width: 3ch;
 }
+
+/* Two identical groups create a continuous, seamless loop. */
+.strip {
+  display: block;
+  padding: 19px 0;
+}
+.strip__track {
+  display: flex;
+  width: max-content;
+  animation: discipline-marquee 24s linear infinite;
+}
+.strip__group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-shrink: 0;
+  min-width: 100vw;
+  gap: 35px;
+  padding-right: 35px;
+}
+.strip__item {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  flex-shrink: 0;
+}
+.strip .strip__label { font-size: inherit; }
+.strip .strip__separator { font-size: 1rem; }
+@keyframes discipline-marquee {
+  to { transform: translateX(-50%); }
+}
+@media (max-width: 700px) {
+  .strip__group { gap: 24px; padding-right: 24px; }
+  .strip__item { gap: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .strip__track { animation: none; }
+}
